@@ -1,0 +1,14 @@
+Package: wstunnel
+Priority: optional
+Section: utils
+Maintainer: Stephan Seifermann <seiferma@users.noreply.github.com>
+Architecture: arm64
+Version: 10.1.11
+Filename: pool/main/w/wstunnel/wstunnel_10.1.11_arm64.deb
+Size: 4695250
+MD5sum: 2a5da22dc800d1f34d9c9dc83f98d4be
+SHA1: b7aaf4d6b99278cc447def3f4b1f6f8e7cdb88f8
+SHA256: f033347d4135a7f6f42c0b97dfa18aae3bb643f6ca1d408b8d34a41f55de7b8b
+SHA512: df6acd82b551a6ede5dcc8fd5d01cac9f4c7f95e14dd5e84563d2160a64f3d2fd8971556ce7c52f9042f1afbd67715270ba941fc422a6a22d629fd63d65ba7f1
+Description: Packaged wstunnel (Rust version)
+
