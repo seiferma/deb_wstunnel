@@ -1,0 +1,7 @@
+Origin: deb all
+Label: deb all
+Archive: all
+Suite: all
+Codename: all
+Architecture: arm64
+Component: main
