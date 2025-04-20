@@ -8,6 +8,7 @@ on:
   workflow_dispatch:
 
 env:
+  # renovate: datasource=github-releases depName=erebe/wstunnel
   APP_VERSION: 10.1.9
   BUILD_DIR: /tmp/build
 
