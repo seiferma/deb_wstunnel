@@ -20,8 +20,10 @@
     ],
     "packageRules": [
         {
-          "matchManagers": ["regex"],
-          "extractVersion": "^v(?<version>.*)$"
+            "matchManagers": [
+                "custom.regex"
+            ],
+            "extractVersion": "^v(?<version>.*)$"
         }
-      ]
-  }
+    ]
+}
