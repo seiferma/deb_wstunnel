@@ -1,0 +1,86 @@
+name: Apt
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+env:
+  APP_VERSION: 10.1.9
+  BUILD_DIR: /tmp/build
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        arch: [amd64, arm64]
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Build
+      id: build
+      run: |
+        sudo ./create.sh $APP_VERSION ${{ matrix.arch }}
+        echo "file=$(ls $BUILD_DIR/*.deb | head -n 1)" >> "$GITHUB_OUTPUT"
+
+    - name: Upload
+      uses: actions/upload-artifact@v4
+      with:
+        name: deb-${{ matrix.arch }}
+        path: ${{ steps.build.outputs.file }}
+
+
+
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    permissions:
+      contents: write
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Download
+      uses: actions/download-artifact@v4
+      with:
+        pattern: deb-*
+        path: ./new-debs
+        merge-multiple: true
+
+    - name: Import GPG key
+      uses: crazy-max/ghaction-import-gpg@v6
+      with:
+        gpg_private_key: ${{ secrets.GPG_PRIVATE }}
+        passphrase: ${{ secrets.GPG_SECRET }}
+
+    - name: Install aptly
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y aptly
+
+    - name: Checkout pages repo
+      uses: actions/checkout@v4
+      with:
+        ref: 'gh-pages'
+        path: deb
+
+    - name: Build apt repo
+      run: |
+        .github/build_repo.sh
+
+    - name: Commit & Push changes
+      uses: actions-js/push@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: gh-pages
+        directory: ./deb
+        message: 'update binaries in repository ${date}'
+        amend: true
+        force: true
