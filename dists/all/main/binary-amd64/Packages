@@ -1,0 +1,14 @@
+Package: wstunnel
+Priority: optional
+Section: utils
+Maintainer: Stephan Seifermann <seiferma@users.noreply.github.com>
+Architecture: amd64
+Version: 10.7.0
+Filename: pool/main/w/wstunnel/wstunnel_10.7.0_amd64.deb
+Size: 5410532
+MD5sum: 3eff925d56ac61fff12cb7e387b77a4e
+SHA1: 1e4cc1dd39644b0af7a1c8ac5b4b4d292175ee9b
+SHA256: 3623996291e28728ef72502e96fc3642aee209d8356cf445d1eb0a58c7b6e4b8
+SHA512: 0d08ebb4568b2905e7e07e1874d8b5a9263b9709d4739b213036b44622eb236d2b4e1ec2d5b0852fd0058af50d0f0cdb66c2c885487af1ce4ff50cc6f5e510cb
+Description: Packaged wstunnel (Rust version)
+
