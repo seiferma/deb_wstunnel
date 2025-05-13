@@ -10,8 +10,8 @@
         {
             "customType": "regex",
             "description": "Update version variable in Github workflow files",
-            "fileMatch": [
-                "(^|/)(workflow-templates|\\.(?:github|gitea|forgejo)/(?:workflows|actions))/.+\\.ya?ml$"
+            "managerFilePatterns": [
+                "/(^|/)(workflow-templates|\\.(?:github|gitea|forgejo)/(?:workflows|actions))/.+\\.ya?ml$/"
             ],
             "matchStrings": [
                 "# renovate: datasource=(?<datasource>[a-z0-9-.]+?) depName=(?<depName>.+?)\\s+.+?\\s*:\\s*[\"']?(?<currentValue>.+?)[\"']?\\s"
