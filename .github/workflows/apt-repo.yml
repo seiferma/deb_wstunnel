@@ -9,7 +9,7 @@ on:
 
 env:
   # renovate: datasource=github-releases depName=erebe/wstunnel
-  APP_VERSION: 10.5.5
+  APP_VERSION: 10.6.1
   BUILD_DIR: /tmp/build
 
 jobs:
