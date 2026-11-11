@@ -5,7 +5,9 @@
         ":configMigration",
         "github>seiferma/renovate-selfhosted:preset-docker"
     ],
-    "dependencyDashboard": false,
+    "dependencyDashboard": {
+        "enabled": false
+    },
     "customManagers": [
         {
             "customType": "regex",
